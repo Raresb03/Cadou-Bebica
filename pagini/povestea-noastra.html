@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Povestea Noastră</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #fff5f8;
+            overflow-x: hidden;
+        }
+        h1 {
+            text-align: center;
+            color: #b22222;
+            margin-top: 20px;
+            font-size: 3em;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .story {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+        .story p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        .heart-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .heart {
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            position: absolute;
+            animation: float 5s infinite;
+            border-radius: 50%;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Povestea Noastră</h1>
+    <div class="story">
+        <p>Totul a început cu un zâmbet, o privire și o conexiune pe care nimeni nu o poate explica. Fiecare zi alături de tine este un dar...</p>
+    </div>
+    <div class="heart-container"></div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
