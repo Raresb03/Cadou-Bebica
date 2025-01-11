@@ -17,8 +17,8 @@ window.requestAnimationFrame=
         element.__lastTime = currTime + timeToCall;
     };
 })();
-window.isDevice = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test
-    ((navigator.userAgent || navigator.vendor || window.opera).toLowerCse()));
+window.isDevice = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        ((navigator.userAgent || navigator.vendor || window.opera)).toLowerCase()));
 var loaded = false;
 var init = function () {
     if(loaded) return;
@@ -27,24 +27,23 @@ var init = function () {
     var koef = mobile ? 0.5 : 1;
     var canvas = document.getElementById("heart");
     var ctx = canvas.getContext("2d");
-    var width = canvas.width = koef * window.innerWidth;
-    var height = canvas.height = koef * window.innerHeight;
-    var rand = Math.random
+    var width = canvas.width = koef * innerWidth;
+    var height = canvas.height = koef * innerHeight;
+    var rand = Math.random;
     ctx.fillStyle = "rgba(0,0,0,1)";
     ctx.fillRect(0, 0, width, height);
-}
 
 var heartPosition = function(rad) {
-  return [Math.pow(Math.sin(rad),3), -15 * Math.cos(rad) 
-    - 5 * Math.cos(2 * rad) - 2 * Math.cos(3 * rad) - Math.cos(4 * rad)];
+  return [Math.pow(Math.sin(rad),3), -(15 * Math.cos(rad) 
+    - 5 * Math.cos(2 * rad) - 2 * Math.cos(3 * rad) - Math.cos(4 * rad))];
 }
 var scaleAndTranslate = function(pos, sx, sy, dx, dy){
     return [dx + pos[0]*sx, dy + pos[1]*sy];
 }
 
 window.addEventListener('resize', function(){
-    width = canvas.width = koef * window.innerWidth;
-    height = canvas.height = koef * window.innerHeight;
+    width = canvas.width = koef * innerWidth;
+    height = canvas.height = koef * innerHeight;
     ctx.fillStyle = "rgba(0,0,0,1)";
     ctx.fillRect(0, 0, width, height);
 });
@@ -61,7 +60,7 @@ for(i = 0; i< Math.PI*2; i+=dr) pointsOrigin.
 push(scaleAndTranslate(heartPosition(i), 90, 5, 0, 0));
 var heartPointsCount = pointsOrigin.length;
 
-var tracePoints = [];
+var targetPoints = [];
 var pulse = function(kx, ky){
     for(i = 0;i<pointsOrigin.length;i++){
         targetPoints[i] = [];
@@ -86,7 +85,7 @@ for(i=0; i< heartPointsCount; i++)  {
         trace: []
     };
     for(var k = 0; k < traceCount; k++) e[i].trace[k] = {x: x, y: y}; 
-
+}
 
 var config = {
     traceK: 0.4,
@@ -121,8 +120,8 @@ var loop = function(){
                 }
             }
         }
-        u.vx -= -dx / length * u.speed;
-        u.vy -= -dy / length * u.speed;
+        u.vx += -dx / length * u.speed;
+        u.vy += -dy / length * u.speed;
         u.trace[0].x += u.vx;
         u.trace[0].y += u.vy;
         u.vx *= u.force;

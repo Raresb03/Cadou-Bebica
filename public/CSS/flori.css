@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #001f3f, #000000);
+    overflow: hidden;
+  }
+  
+  .scene {
+    position: relative;
+    width: 300px;
+    height: 500px;
+  }
+  
+  .flower {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: grow 2s ease-out infinite alternate;
+  }
+  
+  .stem {
+    width: 10px;
+    height: 200px;
+    background: #008000;
+    margin: 0 auto;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  .petals {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: open 3s ease-in-out infinite alternate;
+  }
+  
+  .petal {
+    width: 40px;
+    height: 80px;
+    background: #32cd32;
+    position: absolute;
+    border-radius: 50%;
+    transform-origin: bottom center;
+  }
+  
+  .petal:nth-child(1) {
+    transform: rotate(0deg);
+  }
+  
+  .petal:nth-child(2) {
+    transform: rotate(90deg);
+  }
+  
+  .petal:nth-child(3) {
+    transform: rotate(180deg);
+  }
+  
+  .petal:nth-child(4) {
+    transform: rotate(270deg);
+  }
+  
+  .center {
+    width: 30px;
+    height: 30px;
+    background: yellow;
+    border-radius: 50%;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .grass {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to top, #006400, transparent);
+  }
+  
+  @keyframes grow {
+    0% {
+      transform: translateX(-50%) scaleY(0.8);
+    }
+    100% {
+      transform: translateX(-50%) scaleY(1.2);
+    }
+  }
+  
+  @keyframes open {
+    0% {
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
+  .firefly {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 10px yellow, 0 0 20px yellow;
+    animation: moveFirefly 10s linear infinite;
+  }
+  
+  @keyframes moveFirefly {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(50px, -50px);
+    }
+  }
+  
